@@ -1,0 +1,17 @@
+
+<div>
+    <p>予約内容確認</p>
+    <%= @inn.price class:"reserv_price" %>
+    <%= form_for @reserv do |f| %>
+        <p>開始日</p>
+        <%= f.text_field :start_day, value: @reserv.start_day, readonly: true %>
+        <p>終了日</p>
+        <%= f.text_filed :end_day, value: @reserv.end_day, readonly: true %>
+        <p><span>使用日数：</span><%= @days %>日</p>
+        <p><span>人数：</span><%= @reserv.num_pepo %>人</p>
+        <p>合計金額</p>
+        <%= f.text_field :fee, value:@fee, readonly: true %>
+        <p>上記内容でよろしければ「予約確定」を押してください</p>
+        <%= f.submit "予約を確定" %>
+        <%= f.submit "ルーム詳細に戻る", start_day: "back"%>
+</div>

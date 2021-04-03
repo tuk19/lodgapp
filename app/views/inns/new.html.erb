@@ -1,0 +1,30 @@
+<%= render "shared/sidebar_inn.html.erb" %>
+<div>
+    <h2>ルーム情報登録</h2>
+
+    <%= form_for @inn do |f| %>
+        <table>
+            <tr>
+                <th><%= f.label :name, "ルーム名" %><span>必須</span></th>
+                <td><%= f.text_field :name, placeholder: "ルーム名を入力" %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :introduction, "ルーム紹介" %><span>必須</span></th>
+                <td><%= f.text_area :introduction, placeholder:"ルーム説明を入力" %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :price, "料金"%><span>必須</span></th>
+                <td><%= f.number_field :price, placeholder: "一日あたりの料金を入力" %></td>
+            </tr>
+            <tr>
+                <th><%= f.label :address, "住所" %><span>必須</span></th>
+                <td><%= f.text_field :address, placeholder:"住所"%></td>
+            </tr>
+            <tr>
+                <th><%= f.label :image, "ルーム画像" %></th>
+                <td><%= f.file_field :image %></td>
+            </tr>
+        </table>
+        <%= f.submit "登録" %>
+    <% end %>
+</div>

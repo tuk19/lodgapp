@@ -11,6 +11,49 @@
   </head>
 
   <body>
+    <header>
+      <div class="header-nav">
+        <div class="header-left">
+          <%= link_to image_tag("logo.png", class:"top-logo"), :lodg %>
+          <%= form_tag(:inns, :method => "get", class: "header-form") do %>
+            <div class="search search-area">
+              <i class="fas fa-map-marker-alt"></i>
+              <%= text_field_tag :search, "", placeholder: "エリア" %>
+            </div>
+            <div class="search search-keyword">
+              <i class="fas fa-search"></i>
+              <%= text_field_tag :search, "", placeholder: "キーワード" %>
+              <%= submit_tag "Search", :address => nil, class:"no-display" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="header-right">
+          <nav>
+            <% if user_signed_in? %>
+              <div class="user_name login"><%= current_user.name %>
+                <% if current_user.image? %>
+                  <%= image_tag current_user.image.url %>
+                <% else %>
+                  <%= image_tag("default_icon.jpg") %>
+                <% end %>
+              </div>
+              <%= link_to "ルーム登録", :new_inn %>
+              <%= link_to "登録済みルーム一覧", inn_path(current_user) %>
+              <%= link_to "予約済みルーム一覧", :reservs %>
+              <%= link_to "設定", :users %>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            <% else %>
+              <%= link_to "ログイン", new_user_session_path, class: "login" %>
+              <%= link_to "登録する", new_user_registration_path, class: "Regist" %>
+            <% end %>
+          </nav>
+        </div>
+        <div class="clear-float"></div>
+      </div>
+    </header>
     <%= yield %>
+    <footer>
+      <p class="footer-text">©️ 2020 POTEPAN.INC</p>
+    </footer>
   </body>
 </html>

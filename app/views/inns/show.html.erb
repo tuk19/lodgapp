@@ -1,0 +1,23 @@
+<h2>登録済みルーム</h2>
+<div>
+    <table>
+        <tr>
+            <th>ルーム画像</th>
+            <th>ルーム名</th>
+            <th>ルーム紹介</th>
+            <th>料金</th>
+            <th>作成日</th>
+        </tr>
+        <tr>
+            <% unless @inns == nil %>
+                <% @inns.each do |inn| %>
+                    <td><%= inn.image %></td>
+                    <td><%= inn.name %></td>
+                    <td><%= inn.introduction %></td>
+                    <td><%= inn.price %></td>
+                    <td><%= inn.created_at%></td>
+                <% end %>
+            <% end %>
+        </tr>
+    </table>
+</div>
