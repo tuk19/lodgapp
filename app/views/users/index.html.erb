@@ -3,6 +3,10 @@
     <h2>アカウント</h2>
     <table>
         <tr>
+            <th>id</th>
+            <td><%= @user.id %></td>
+        </tr>
+        <tr>
             <th>メールアドレス</th>
             <td><%= @user.email %></td>
         </tr>
@@ -12,6 +16,7 @@
         </tr>
     </table>
     <div class="edit_user">
-        <%= link_to "編集", edit_user_path(current_user) %>
+        <%= link_to "編集", edit_user_registration_path(current_user) %>
+        <%#= link_to "user編集", edit_user_path(current_user) %> <%# current_userを使ってuser/editへ行く%>
     </div>
 </div>

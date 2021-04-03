@@ -13,22 +13,22 @@ class InnsController < ApplicationController
   end
 
   def create
+    # binding.pry
+    # current_user.inns.create(post_params)
+    # redirect_to :inns
+    @inn = Inn.new(params.require(:inn).permit(:name, :address, :price, :introduction, :image))
     binding.pry
-    Inn.create(post_params)
-
-    # @inn = Inn.new(params.require(:inn).permit(:name, :address, :price, :introduction, :image))
-
-    # if @inn.save
-    #   flash[:notice] = "新規宿を登録しました"
-    #   redirect_to :inns
-    # else
-    #   render "new"
-    # end
+    if @inn.save
+      flash[:notice] = "新規宿を登録しました"
+      redirect_to :inns
+    else
+      render "new"
+    end
   end
 
   private
   def post_params
-    params.permit(:name, :address, :price, :introduction, :image)
+    params.require(:inn).permit(:name, :address, :price, :introduction, :image)
   end
 
   def show
