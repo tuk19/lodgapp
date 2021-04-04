@@ -1,11 +1,13 @@
 class InnsController < ApplicationController
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @inns = Inns.search(params[:search])
+    @inns = Inn.search(params[:search], params[:keyword])
+    # binding.pry
   end
 
   def index
-
+    @user = User.find(current_user.id)
+    @inns = current_user.inns
   end
 
   def new
@@ -13,27 +15,20 @@ class InnsController < ApplicationController
   end
 
   def create
-    # binding.pry
-    # current_user.inns.create(post_params)
-    # redirect_to :inns
-    @inn = Inn.new(params.require(:inn).permit(:name, :address, :price, :introduction, :image))
-    binding.pry
+    @inn = current_user.inns.new(params.require(:inn).permit(:name, :address, :price, :introduction, :image))
     if @inn.save
+      binding.pry
       flash[:notice] = "新規宿を登録しました"
-      redirect_to :inns
+      redirect_to inn_path(current_user)
     else
       render "new"
     end
   end
 
-  private
-  def post_params
-    params.require(:inn).permit(:name, :address, :price, :introduction, :image)
-  end
-
   def show
-    @user = User.find(current_user.id)
-    @inns = @user.inns
+    @inn = Inn.find(params[:id])
+    @users = @inn.user
+    @reserv =Reserv.new
   end
 
   def edit

@@ -16,16 +16,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    binding.pry
     @user = User.find(current_user.id)
   end
 
   def update
-    binding.pry
     @user = User.find(current_user.id)
     if @user.update(params.require(:user).permit(:name, :email, :introduction, :image))
       flash[:notice] = "情報を更新しました"
-      redirect_to :users
+      redirect_to edit_user_path(current_user)
     else
       render "edit"
     end

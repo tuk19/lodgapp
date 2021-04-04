@@ -1,25 +1,27 @@
+<h2>登録済みルーム</h2>
 <div>
-    <p>検索結果:
-        <% if @inns == nil %>
-            0
-        <% else %>
-            <%= @inns.count %>
-        <% end %>
-        件</p>
-    <div>
-        <% if @inns == nil %>
-            <p>登録はありません</p>
-        <% else %>
-            <%= @inns.each do |inn| %>
-                <%= link_to("", {controller: "reservs", action:"new"}, class: "reserv_link") do%>
-                    <div>
-                        <%= inn.image %>
-                        <%= inn.name %>
-                        <%= inn.address %>
-                        <%= inn.price%>
-                    </div>
-                <% end %>
+    <table>
+        <thead>
+            <tr>
+                <th>ルーム画像</th>
+                <th>ルーム名</th>
+                <th>ルーム紹介</th>
+                <th>料金</th>
+                <th>作成日</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% unless @inns == nil %>
+                <% @inns.each do |inn| %>
+                    <tr>
+                        <td><%= image_tag (inn.image.thumb.url) %></td>
+                        <td><%= link_to inn.name, inn%></td>
+                        <td><%= inn.introduction %></td>
+                        <td><%= inn.price %></td>
+                        <td><%= inn.created_at%></td>
+                    <% end %>
+                </tr>
             <% end %>
-        <% end %>
-    </div>
+        </tbody>
+    </table>
 </div>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'lodg', to: "lodg#index"
   get 'inn/index'
   get 'users/index'
+  get 'inns/search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users
   resources :inns

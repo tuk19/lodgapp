@@ -2,12 +2,12 @@
 <div class="user_prof">
     <h2>プロフィール</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_for(current_user, url: user_path(current_user), method: :patch) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
             <% if @user.image? %>
-                <%= image_tag @user.image.url %>
+                <%= image_tag @user.image.thumb.url %>
             <% else %>
                 <%= image_tag("default_icon.jpg") %>
             <% end %>

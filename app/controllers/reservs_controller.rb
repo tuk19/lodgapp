@@ -1,7 +1,10 @@
 class ReservsController < ApplicationController
   def index
-    @reservs = Reserv.find(current_user.id)
-    @inns = @reserv.inns
+    # binding.pry
+    @reservs = current_user.reserv
+    # @inns = @reserv.inns
+    # @user = User.find(current_user.id)
+    # @inns = current_user.inns
   end
 
   def new
