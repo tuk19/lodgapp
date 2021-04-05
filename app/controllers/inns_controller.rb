@@ -1,8 +1,8 @@
 class InnsController < ApplicationController
   def search
     #Viewのformで取得したパラメータをモデルに渡す
-    @inns = Inn.search(params[:search], params[:keyword])
-    # binding.pry
+    @inns = Inn.search(params[:search], params[:keyword], params[:key])
+
   end
 
   def index

@@ -1,10 +1,7 @@
 class ReservsController < ApplicationController
   def index
-    # binding.pry
-    @reservs = current_user.reserv
-    # @inns = @reserv.inns
-    # @user = User.find(current_user.id)
-    # @inns = current_user.inns
+    @user = User.find(current_user.id)
+    @reservs = @user.reservs
   end
 
   def new
@@ -36,12 +33,13 @@ class ReservsController < ApplicationController
   end
 
   def create
-    @reserv = Reserv.new(params.require(:reserv).permit(:start_day, :end_day, :num_pepo, :fee))
+    @reserv = current_user.reservs.new(params.require(:reserv).permit(:start_day, :end_day, :num_pepo, :fee, :inn_id))
+    binding.pry
     if @reserv.save
       flash[:notice] = "新規予約を登録しました"
       redirect_to :lodg
     else
-      render "new"
+      render :lodg
     end
   end
 

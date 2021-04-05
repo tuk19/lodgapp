@@ -18,22 +18,22 @@
                 <div class="recommend-image">
                     <%= form_tag(inns_search_path, :method => "get", class: "image-form") do %>
                         <p class="area-text">東京<p>
-                        <%= link_to image_tag("img_tokyo.jpg", class:"top-image"), controller: "inns", action: "search", search: '東京' %>
+                        <%= link_to image_tag("img_tokyo.jpg", class:"top-image"), controller: "inns", action: "search", search: '東京都' %>
                     <% end %>
                 </div>
                 <div class="recommend-image">
                     <p class="area-text">大阪<p>
-                    <%= link_to image_tag("img_osaka.jpg", class:"top-image"), controller: "inns", action: "search", search: '大阪' %>
+                    <%= link_to image_tag("img_osaka.jpg", class:"top-image"), controller: "inns", action: "search", search: '大阪府' %>
                 </div>
                 <div class="recommend-image">
-                    <%= link_to controller: "inns", action: "search", search: "京都" do%>
+                    <%= link_to controller: "inns", action: "search", search: "京都府" do%>
                         <p class="area-text">京都<p>
                         <%= image_tag("img_kyoto.jpg", class:"top-image") %>
                     <% end %>
                 </div>
                 <div class="recommend-image">
                     <p class="area-text">札幌<p>
-                    <%= link_to image_tag("img_sapporo.jpg", class:"top-image"), controller: "inns", action: "search", search: "札幌" %>
+                    <%= link_to image_tag("img_sapporo.jpg", class:"top-image"), controller: "inns", action: "search", search: "札幌市" %>
                 </div>
             </div>
         </div>

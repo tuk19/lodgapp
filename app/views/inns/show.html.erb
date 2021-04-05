@@ -23,6 +23,11 @@
             <%= f.label :num_pepo, "人数"%>
             <%= f.number_field :num_pepo %>
         </div>
-        <%= f.submit "予約する" %>
+        <% if user_signed_in? %>
+            <%= f.hidden_field :inn_id, value: @inn.id%>
+            <%= f.submit "予約する" %>
+        <% else %>
+            <%= link_to "ログイン", new_user_session_path %>
+        <% end %>
     <% end %>
 <div>

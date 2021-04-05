@@ -10,7 +10,7 @@
         <% if @inns == nil %>
             <p>登録はありません</p>
         <% else %>
-            <%= @inns.each do |inn| %>
+            <% @inns.each do |inn| %>
                 <div class="show_room">
                     <%= link_to inn do%>
                         <%= image_tag inn.image.thumb.url %>
