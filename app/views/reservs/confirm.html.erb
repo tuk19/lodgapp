@@ -1,17 +1,29 @@
 
-<div>
-    <p>予約内容確認</p>
-    <%= @inn.price class:"reserv_price" %>
+<div class="reserv-conf-top">
+    <p class="conf-title">予約内容確認</p>
+    <p class="conf-price"><%= @inn.price %> / 日</p>
     <%= form_for @reserv do |f| %>
-        <p>開始日</p>
-        <%= f.text_field :start_day, value: @reserv.start_day, readonly: true %>
-        <p>終了日</p>
-        <%= f.text_filed :end_day, value: @reserv.end_day, readonly: true %>
-        <p><span>使用日数：</span><%= @days %>日</p>
-        <p><span>人数：</span><%= @reserv.num_pepo %>人</p>
-        <p>合計金額</p>
-        <%= f.text_field :fee, value:@fee, readonly: true %>
-        <p>上記内容でよろしければ「予約確定」を押してください</p>
-        <%= f.submit "予約を確定" %>
-        <%= f.submit "ルーム詳細に戻る", start_day: "back"%>
+        <div class="conf-sday-box">
+            <p class="conf-sday-label">開始日</p>
+            <div class="conf-sday"><%= f.text_field :start_day, value: @reserv.start_day, readonly: true, class: "conf-sday-field" %></div>
+        </div>
+        <div class="conf-eday-box">
+            <p class="conf-eday-label">終了日</p>
+            <div class="conf-eday"><%= f.text_field :end_day, value: @reserv.end_day, readonly: true, class: "conf-eday-field" %></div>
+        </div>
+        <div class="days-box">
+            使用日数：<span class="days-field"><%= @days %></span>日
+        </div>
+        <div class="numpepo">
+            人数：<span class="numpepo-field"><%= @reserv.num_pepo %></span>人<%= f.hidden_field :num_pepo, value:@reserv.num_pepo %>
+        </div>
+        <div class="conf-fee-box">
+            <p class="conf-fee-label">合計金額</p>
+            <div class="conf-fee"><%= f.text_field :fee, value:@fee, readonly: true, class: "conf-fee-field" %></div>
+        </div>
+        <p class="conf-text">上記内容でよろしければ「予約を確定」を押してください</p>
+        <%= f.hidden_field :inn_id, value: @inn.id%>
+        <div class="conf-submit-box"><%= f.submit "予約を確定", class: "account-submit conf-submit" %></div>
+        <div class="return-room-view"><%= f.submit "ルーム詳細に戻る", name: "back", class: "return-room-submit" %></div>
+    <% end %>
 </div>

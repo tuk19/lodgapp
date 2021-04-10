@@ -1,32 +1,39 @@
-<h2>予約済みルーム</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ルーム画像</th>
-                <th>ルーム名</th>
-                <th>ルーム紹介</th>
-                <th>合計料金</th>
-                <th>開始日</th>
-                <th>終了日</th>
-                <th>予約確定日時</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if @reservs == nil %>
-                <p>登録はありません</p>
-            <% else %>
-                <% @reservs.each do |reserv| %>
-                    <tr>
-                        <td><%= image_tag reserv.inn.image.url %></td>
-                        <td><%= link_to reserv.inn.name, reserv.inn %></td>
-                        <td><%= reserv.inn.introduction %></td>
-                        <td><%= reserv.fee %></td>
-                        <td><%= reserv.start_day %></td>
-                        <td><%= reserv.end_day %></td>
-                        <td><%= reserv.created_at%></td>
-                        <td><%= reserv.inn_id%></td>
-                    </tr>
+<div class="reserved-room">
+    <div class="reserved-box">
+        <div class="reserved-title">
+            <h2>予約済みルーム一覧</h2>
+        </div>
+        <table class="reserved-table">
+            <thead class="reserved-thead">
+                <tr>
+                    <th class="th-image">ルーム画像</th>
+                    <th class="th-name">ルーム名</th>
+                    <th class="th-intro">ルーム紹介</th>
+                    <th class="th-fee">合計料金</th>
+                    <th class="th-sday">開始日</th>
+                    <th class="th-eday">終了日</th>
+                    <th class="th-created">予約確定日時</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="reserved-tbody">
+                <% if @reservs == nil %>
+                    <p>登録はありません</p>
+                <% else %>
+                    <% @reservs.each do |reserv| %>
+                        <tr>
+                            <td class="reserved-image-box"><%= image_tag reserv.inn.image.url, class: "reserved-image" %></td>
+                            <td class="reserved-name"><%= link_to reserv.inn.name, reserv.inn %></td>
+                            <td class="reserved-intro"><%= reserv.inn.introduction %></td>
+                            <td class="reserved-fee"><%= reserv.fee %></td>
+                            <td class="reserved-sday"><%= reserv.start_day %></td>
+                            <td class="reserved-eday"><%= reserv.end_day %></td>
+                            <td class="reserved-created"><%= reserv.created_at%></td>
+                            <td><%= link_to "削除", reserv, method: :delete, data:{confirm: "削除してよろしいですか?"}, class:"delete" %></td>
+                        </tr>
+                    <% end %>
                 <% end %>
-            <% end %>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
+</div>

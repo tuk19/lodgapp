@@ -1,3 +1,7 @@
+/* =============================================
+        Common
+==============================================*/
+
 body {
     margin: 0px;
     padding-bottom: 180px;
@@ -11,9 +15,92 @@ header {
     padding: 4px 40px;
 }
 
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.account-submit {
+    color: white;
+    cursor: pointer;
+    background-color: blue;
+    margin: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 1px solid blue;
+}
+
+.delete {
+    color: white;
+    background-color: red;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.goto-session {
+    font-size: 16px;
+    color: blue;
+}
+
+.form-text {
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+    text-align: left;
+    margin: 2px 2px 15px;
+    width: 60%;
+}
+
+.field_with_errors {
+    display: inline;
+    background-color: red;
+    padding: 15px 10px 15px 0px;
+}
+
+.flash-text {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+#error_explanation {
+    border: red 1px solid;
+    width: 50%;
+    margin: 0 auto 15px;
+}
+
+#error_explanation h2 {
+    color: white;
+    background-color: red;
+    margin: 0;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 2px;
+}
+
+#error_explanation ul {
+    margin: 5px;
+}
+#error_explanation ul li {
+    font-size: smaller;
+}
+
+.left-nav-menu {
+    height: 100vh;
+    width: 200px;
+}
+
+/* =============================================
+        layout/application.html.erb
+==============================================*/
+
 .top-logo {
     vertical-align: middle;
 }
+
 .header-left {
     float: left;
 }
@@ -24,10 +111,10 @@ header {
 
 .search input {
     border: none;
-    padding: 10px;
+    padding: 8px;
     text-align: left;
     margin-left: 30px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .search-area{
@@ -64,13 +151,78 @@ header {
     clear: both;
 }
 
+.login-nav {
+    vertical-align: center;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .login {
-    color: yellow;
+    color: white;
+    padding: 7px;
+    background-color: #1134dd;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.Regist {
+    color: white;
+    background-color: #9d9e9f;
+    padding: 7px;
+    border-radius: 5px;
+    margin-left: 10px;
 }
 
 .flex {
     display: flex;
 }
+
+#sidebar {
+    display: none;
+}
+
+.user-image {
+    border-radius: 100px;
+    height: 65px;
+    width: 65px;
+}
+
+.user-name {
+    color: white;
+    margin: 20px;
+}
+
+.sidebar_nav {
+    background-color: white;
+    position: absolute;
+    padding: 15px;
+    right: 5px;
+    font-size: 16px;
+    line-height: 2em;
+    list-style: none;
+    top: 64px;
+    z-index: 2;
+}
+
+
+footer {
+    background-color: black;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+footer p {
+    color: white;
+    padding: 50px;
+}
+
+/* =============================================
+        lodg/index.html.erb
+==============================================*/
 
 .top-main {
     background-image: url("img_cover_top.jpg");
@@ -86,7 +238,7 @@ header {
 }
 
 .top-form-area {
-    background: white;
+    background-color: white;
     border-radius: 5px;
     padding: 24px;
     max-width: 50%;
@@ -128,7 +280,7 @@ header {
 }
 
 .recommend-area {
-    margin: 3% 20%;
+    margin: 3% 10%;
 }
 
 .recommend-title {
@@ -147,9 +299,9 @@ header {
     position: absolute;
     display: inline;
     bottom: 30px;
+    left: 40%;
     font-size: 24px;
     color: white;
-    text-align: center;
     font-weight: bolder;
 }
 
@@ -161,15 +313,606 @@ header {
 }
 
 
-footer {
-    background-color: black;
+.flash-lodg {
+    background-color: #4a90e2;
+}
+
+/* ========================================
+        devise/registrations/new.html.erb
+===========================================*/
+
+.registration_top {
+    margin: 20px auto;
+    padding: 20px 0;
+    width: 60%;
     text-align: center;
+    border: 1px solid #55555f;
+    border-radius: 8px;
+}
+
+.new-account {
+    padding-top: 10px;
+    font-size: 16px;
+}
+
+.essential {
+    background-color: orange;
+    border-radius: 5px;
+    color: white;
+    width: 50px;
+    font-size: 14px;
+    padding: 2px;
+}
+
+.new-account-submit {
+    padding: 10px;
+    width: 80%;
+}
+
+
+/* ==========================================
+        devise/registrations/edit
+========================================== */
+
+.edit-password-top {
+    border: 1px solid;
+    margin: 10px auto;
+    width: 40%;
+    padding: 10px 20px;
+    text-align: center
+}
+
+.edit-password-top h2 {
+    font-weight: lighter;
+    letter-spacing: 3px;
+}
+
+.edit-email-label, .edit-pass-label, .edit-confpass-label, .current-pass-label {
+    margin: 5px 0;
+}
+
+.regist-email-field, .regist-pass-field, .regist-confpass-field, .regist-curpass-field {
+    font-size: 18px;
+    border: 1px solid #c8e2f1;
+    border-radius: 5px;
+    padding: 10px 15px;
+    width: 70%;
+}
+
+.edit-email-content, .edit-pass-content, .edit-confpass-content, .current-pass-content {
+    margin-bottom: 15px;
+}
+
+.pass-submit {
+    width: 80%;
+}
+
+.edit-back a {
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 8px 36%;
+    color: blue;
+}
+
+/* ==========================================
+        devise/sessions/new
+========================================== */
+
+.login_top {
+    margin: 20px auto;
+    padding: 20px 0;
+    width: 60%;
+    text-align: center;
+    border: 1px solid #55555f;
+    border-radius: 8px;
+}
+
+.login-submit {
+    padding: 5px;
+    width: 30%;
+}
+
+/* ========================================
+        users/index.html.erb
+===========================================*/
+.user-account {
+    background-color: #f0eaea;
+    width: 100%;
+    border-left: 1px solid #dbd4d4
+}
+
+.user-account-box {
+    width: 80%;
+    margin: 40px auto;
+    padding: 5px;
+    background-color: white;
+
+}
+
+.user-account-box h2 {
+    border-bottom: 1px solid;
+    padding-bottom: 20px;
+    margin: 20px;
+}
+
+.email-box, .pass-box {
+    border-bottom: 1px solid;
+    margin: 20px;
+    padding-bottom: 10px;
+}
+
+.email-label, .pass-label {
+    margin-right: 40px;
+    font-weight: bold;
+}
+
+.user-email {
+    margin: 10px 70px;
+}
+
+.user-pass {
+    margin: 10px 100px;
+}
+
+.edit-user {
+    margin-bottom: 20px;
+}
+.edit-user-submit {
+    padding: 10px 50px;
+}
+
+/* ========================================
+        users/edit.html.erb
+===========================================*/
+
+.user-prof {
+    background-color: #f0eaea;
+    width: 100%;
+    border-left: 1px solid #dbd4d4
+}
+
+.user-prof-box {
+    width: 80%;
+    margin: 40px auto;
+    padding: 5px 20px;
+    background-color: white;
+}
+
+.user-prof-box h2 {
+    border-bottom: 1px solid;
+    margin: 20px 10px 0 10px;
+    padding-bottom: 20px;
+}
+
+.edit-user-image {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid;
+    margin: 0 10px;
+}
+
+.edit-prof-image, .edit-prof-name, .edit-prof-intro {
+    margin: 0 10px;
+    border-bottom: 1px solid black;
+    padding: 20px 0;
+}
+
+.prof-image-label label, .prof-name-label label, .prof-intro-label label {
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.prof-image-content, .prof-name-content, .prof-intro-content {
+    margin: auto;
+}
+
+.prof-name-field {
+    width: 300px;
+    padding: 3px 0 3px 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.prof-intro-field {
+    width: 340px;
+    height: 120px;
+    border-radius: 5px;
+    padding: 10px 0 0 15px;
+    border: 1px solid black;
+}
+
+.edit-prof-submit {
+    padding: 10px 80px;
+}
+/* ========================================
+        inns/search.html.erb
+===========================================*/
+.search-box {
+    padding: 20px 60px;
+}
+
+.search-result {
+    font-size: 24px;
+}
+
+.show-rooom-price::before{
+    content: "¥ "
+}
+
+.show-room-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.show-rooms {
+    border: 1px solid black;
+    width: 24%;
+    margin: 0px 5px 20px;
+}
+
+.show-room-image {
+    position: relative;
+    height: 200px;
+    background-color: #b5b5e4;
+
+}
+
+.room-image {
     position: absolute;
+    width: 100%;
     bottom: 0px;
+}
+
+.show-room {
+    margin: 20px 10px;
+}
+
+.show-room-name {
+    color: gray;
+    font-weight: bolder;
+    font-size: 20px
+}
+
+.show-room-address {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.show-rooom-price {
+    text-align: right;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+/* ========================================
+        inns/show.html.erb
+===========================================*/
+
+.inn-show {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px
+}
+
+.show-left {
+    width: 90%;
+}
+
+.show-image {
+    width: 100%;
+    object-fit: contain;
+}
+
+.show-info {
+    align-items: center;
+}
+
+.show-name-address {
+    margin-left: 20px
+}
+
+.show-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.show-intro {
+    border-top: 1px solid #bbb387;
+    border-bottom: 1px solid #bbb387;
+    padding: 20px;
+}
+
+.show-right-nav {
+    border: 1px solid #dfe2e4;
+    padding: 10px 20px;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.show-price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.show-price::before {
+    content: "¥ "
+}
+
+
+.show-label {
+    margin: 0;
+    font-size: small;
+    letter-spacing: 0.5em;
+}
+
+.show-calender, .show-num {
+    width: 100%;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.show-login {
+    text-align: center;
+}
+
+.show-submit {
+    padding: 10px 60px;
     width: 100%;
 }
 
-footer p {
+.reserv-submit {
+    padding: 5px 80px;
+    margin: 0;
+}
+
+
+/* ========================================
+        inns/new.html.erb
+===========================================*/
+.room-regist {
+    background-color: #f0eaea;
+    width: 100%;
+    border-left: 1px solid #dbd4d4
+}
+
+.room-regist-item {
+    margin: 40px;
+    padding: 10px;
+    height: 1;
+    background-color: white;}
+
+.room-regist-title {
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+
+.room-regist-box {
+    border-bottom: 1px solid black;
+    padding-bottom: 50px;
+}
+
+.room-regist-label-box {
+    width: 20%;
+}
+
+.room-regist-label {
+    font-weight: bold;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.room-field {
+    width: 70%;
+}
+
+.room-form-text {
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #dbd4d4;
+    width: 100%;
+}
+
+.room-form-area {
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    font-size: 16px;
+    color: #dbd4d4;
+    border-radius: 5px;
+
+}
+
+.room-submit {
+    width: 200px;
+}
+
+.top-margin {
+    margin-top: 20px;
+}
+
+.left-margin {
+    margin-left: 5px;
+}
+
+/* =============================================
+    reservs/index.html.erb, inns/index.html.erb
+==============================================*/
+
+.reserved-room, .registered-room {
+    padding: 10px 40px;
+}
+
+.reserved-title .registered-title {
+    padding-bottom: 10px;
+    letter-spacing: 5px;
+}
+
+.reserved-table, .registered-table {
+    width: 100%;
+    border-spacing: 0;
+
+}
+
+.reserved-tbody tr:nth-child(even) td,
+.registered-tbody tr:nth-child(even) td {
+    background-color: #d9d9f3;
+}
+
+.reserved-thead tr th,
+.registered-thead tr th {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 15px 20px;
+}
+
+
+.th-created {
+    width: 70px;
+}
+
+.reserved-tbody tr td,
+.registered-tbody tr td {
+    padding: 10px;
+    text-align: center;
+}
+
+.reserved-image, .registered-image {
+    width: 250px;
+}
+
+.reserved-name, .registered-name {
+    width: 120px;
+}
+
+.reserved-name a, .registered-name a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.reserved-intro, .registered-intro {
+    width: 120px;
+}
+
+.reserved-fee, .registered-fee {
+    width: 100px;
+}
+
+.reserved-fee::before,
+.registered-fee::before {
+    content: "¥ "
+}
+
+.reserved-sday, .reserved-eday {
+    width: 1%;
+    letter-spacing: 1px;
+}
+
+.reserved-sday, .reserved-eday, .reserved-created, .registered-created {
+    font-size: 14px;
+}
+
+/* =============================================
+        reservs/confirm.html.erb
+==============================================*/
+
+.reserv-conf-top {
+    width: 50%;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid;
+}
+
+.conf-title {
+        border-bottom: 1px solid;
+        padding-bottom: 20px;
+        font-weight: bold;
+        font-size: 24px;
+        letter-spacing: 1px;
+}
+
+.conf-price::before {
+    content: "¥ ";
+}
+
+.conf-price {
+    font-size: 20px;
+    font-family: serif;
+}
+
+.conf-sday-box, .conf-eday-box {
+    margin-bottom: 20px;
+}
+
+.conf-sday-label, .conf-eday-label, .conf-fee-label {
+    margin: 2px 0;
+    letter-spacing: 3px;
+    font-size: 18px;
+}
+
+.conf-sday-field, .conf-eday-field, .conf-fee-field {
+    width: 100%;
+    background-color: #d7f4f7;
+    border: 1px solid #c0baba;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.days-box, .numpepo, .conf-text {
+    font-size: 18px;
+    border-bottom: 1px solid;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.conf-submit {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.return-room-submit {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 18px;
     color: white;
-    padding: 50px;
+    background-color: #55555f;
+    border: 1px solid #55555f;
+    border-radius: 5px;
+}
+/* ==================================================
+    sidebar shared/_sidebar, shared/_sidebar_inn
+================================================== */
+.sidebar_channels ul {
+    list-style: none;
+}
+
+.sidebar_channels ul li a {
+    font-size: 20px;
+    font-weight: bolder;
+    width: 100px;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.active{
+    width: 120px;
+    border-right: 3px solid blue;
+}
+
+.active a {
+    color: blue;
 }

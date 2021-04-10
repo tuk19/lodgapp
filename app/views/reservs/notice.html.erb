@@ -1,20 +1,25 @@
-<div>
-    <table>
-        <tr>
-            <th>予約した部屋</th>
-            <td><%= @inn.name %></td>
-        </tr>
-        <tr>
-            <th>開始日</th>
-            <td><%= @reserv.start_day %></td>
-        </tr>
-        <tr>
-            <th>終了日</th>
-            <td><%= @reserv.end_day %></td>
-        </tr>
-        <tr>
-            <th>価格</th>
-            <td><%= @reserv.fee %></td>
-        </tr>
-    </table>
+<div class="notice-box">
+    <div class="flash flash-reserv-notice">
+        <% if flash.notice %>
+            <p class="flash-text"><%= flash.notice %></p>
+        <% end %>
+    </div>
+    <div class="content">
+        <div class="notice-name-box">
+            <p class="notice-name-label">予約した部屋</p>
+            <div class="notice-name"><%= @inn.name %></div>
+        </div>
+        <div class="notice-sday-box">
+            <p class="notice-sday-label">開始日</p>
+            <div class="notice-sday"><%= @reserv.start_day %></div>
+        </div>
+        <div class="notice-eday-box">
+            <p class="notice-eday-label">終了日</p>
+            <div class="notice-eday"><%= @reserv.end_day %></div>
+        </div>
+        <div class="notice-fee-box">
+            <p class="notice-fee-label">価格</p>
+            <div class="notice-fee"><%= @reserv.fee %></div>
+        </div>
+    </div>
 </div>

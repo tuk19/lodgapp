@@ -1,18 +1,24 @@
-<%= render "shared/sidebar" %>
-<div>
-    <h2>アカウント</h2>
-    <table>
-        <tr>
-            <th>メールアドレス</th>
-            <td><%= @user.email %></td>
-        </tr>
-        <tr>
-            <th>パスワード</th>
-            <td><%= "*" * (@user.encrypted_password.length/10) %>
-        </tr>
-    </table>
-    <div class="edit_user">
-        <%= link_to "編集", edit_user_registration_path(current_user) %>
-        <%#= link_to "user編集", edit_user_path(current_user) %> <%# current_userを使ってuser/editへ行く%>
+<div class="flex">
+    <div class="left-nav-menu">
+        <%= render "shared/sidebar" %>
+    </div>
+    <div class="user-account">
+        <div class="user-account-box">
+            <h2>アカウント</h2>
+            <div class="">
+                <div class="flex email-box">
+                    <p class="email-label">メールアドレス</p>
+                    <p class="user-email"><%= @user.email %></p>
+                </div>
+                <div class="flex pass-box">
+                    <p class="pass-label">パスワード</p>
+                    <p class="user-pass"><%= "*" * (@user.encrypted_password.length/10) %></p>
+                </div>
+            </div>
+            <div class="edit-user">
+                <%= link_to "編集", edit_user_registration_path(current_user), class: "account-submit edit-user-submit" %>
+                <%#= link_to "user編集", edit_user_path(current_user) %> <%# current_userを使ってuser/editへ行く%>
+            </div>
+        <div>
     </div>
 </div>

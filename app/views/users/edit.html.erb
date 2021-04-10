@@ -1,41 +1,36 @@
-<%= render "shared/sidebar" %>
-<div class="user_prof">
-    <h2>プロフィール</h2>
-
-    <%= form_for(current_user, url: user_path(current_user), method: :patch) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
-
-        <div class="field">
-            <% if @user.image? %>
-                <%= image_tag @user.image.thumb.url %>
-            <% else %>
-                <%= image_tag("default_icon.jpg") %>
+<div class="flex">
+    <div class="left-nav-menu">
+        <%= render "shared/sidebar" %>
+    </div>
+    <div class="user-prof">
+        <%= render "shared/error", obj: @user %>
+        <div class="user-prof-box">
+            <h2>プロフィール</h2>
+            <%= form_for(current_user, url: user_path(current_user), method: :patch) do |f| %>
+                <%= render "devise/shared/error_messages", resource: resource %>
+                <div class="edit-user-image">
+                    <% if @user.image? %>
+                        <%= image_tag @user.image.thumb.url, alt: "アイコン画像", class: "user-image" %>
+                    <% else %>
+                        <%= image_tag "default_icon.jpg", class: "user-image" %>
+                    <% end %>
+                </div>
+                <div class="flex edit-prof-image">
+                    <p class="prof-image-label"><%= f.label :image, "アイコン画像を選択" %><span class="essential">必須</span></p>
+                    <div class="prof-image-content"><%= f.file_field :image %></div>
+                </div>
+                <div class="flex edit-prof-name">
+                    <p class="prof-name-label"><%= f.label :name, "名前" %><span class="essential">必須</span></p>
+                    <div class="prof-name-content"><%= f.text_field :name, autocomplete: "name", value: @user.name, class: "prof-name-field" %></div>
+                </div>
+                <div class="flex edit-prof-intro">
+                    <p class="prof-intro-label"><%= f.label :introduction, "自己紹介" %><span class="essential">必須</span></p>
+                    <div class="prof-intro-content"><%= f.text_area :introduction, autocomplete: "introduction", value: @user.introduction, placeholder: "自己紹介を入力", class:"prof-intro-field" %></div>
+                </div>
+                <div class="prof-submit-box">
+                    <p class="prof-submit"><%= f.submit "更新", class: "account-submit edit-prof-submit" %></p>
+                </div>
             <% end %>
         </div>
-        <div>
-            <%= f.label :image, "アイコン画像を選択" %>
-            <%= f.file_field :image %>
-        </div>
-
-        <div class="field">
-            <%= f.label :email, "メールアドレス" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", value: @user.email %>
-        </div>
-
-        <div class="field">
-            <%= f.label :name, "名前" %><br />
-            <%= f.text_field :name, autocomplete: "name", value: @user.name %>
-        </div>
-
-        <div class="field">
-            <%= f.label :introduction, "自己紹介" %><br />
-            <%= f.text_area :introduction, autocomplete: "introduction", value: @user.introduction, placeholder: "自己紹介を入力" %>
-        </div>
-
-        <div class="actions">
-            <%= f.submit "更新" %>
-        </div>
-
-        <%= link_to "戻る", :user %>
-    <% end %>
+    </div>
 </div>
