@@ -32,6 +32,10 @@ class ReservsController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user.id)
+    @reserv = current_user.reservs.last
+    @inn = @reserv.inn
+    flash[:notice] = "Reservatioin was succsessfully created."
   end
 
   def edit
@@ -40,7 +44,7 @@ class ReservsController < ApplicationController
 
   def create
     @reserv = current_user.reservs.new(params.require(:reserv).permit(:start_day, :end_day, :num_pepo, :fee, :inn_id))
-    binding.pry
+    # binding.pry
     if params[:back]
       @inn = @reserv.inn
       @users = @inn.user
