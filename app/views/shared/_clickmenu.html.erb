@@ -1,0 +1,8 @@
+
+    <ul class="sidebar_nav">
+        <li><%= link_to "ルーム登録", :new_inn %></li>
+        <li><%= link_to "予約済みルーム一覧", :reservs %></li>
+        <li><%= link_to "登録済みルーム一覧", :inns %></li>
+        <li><%= link_to "設定", :users %></li>
+        <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+    </ul>

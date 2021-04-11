@@ -1,0 +1,9 @@
+<div class="sidebar_list">
+    <div class="sidebar_channels">
+        <ul class="sidebar_list">
+            <%= sidebar_link_item("アカウント", users_path) %>
+            <%#= sidebar_link_item("showプロフィール", user_path(current_user)) %> <%# current_userでuser/showへいく%>
+            <%= sidebar_link_item("プロフィール", edit_user_path(current_user)) %>
+        </ul>
+    </div>
+</div>

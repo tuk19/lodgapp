@@ -1,0 +1,49 @@
+<div class="inn-show">
+    <div class="flex inn-show-box">
+        <div class="show-left">
+            <div class="inn-show-image">
+                <%= image_tag (@inn.image.url), class: "show-image" %>
+            </div>
+            <div class="flex show-info">
+                <% if @users.image? %>
+                    <%= image_tag (@users.image.url), alt: "アイコン画像", class: "user-image" %>
+                <% else %>
+                    <%= image_tag "default_icon.jpg", alt: "アイコン画像", class: "user-image" %>
+                <% end %>
+                <div class="show-name-address">
+                    <p class="show-name"><%= @inn.name %></p>
+                    <p><%= @inn.address %></p>
+                </div>
+            </div>
+            <p class="show-intro"><%= @inn.introduction %></p>
+        </div>
+        <div class="show-right">
+            <div class="">
+                <%= render "shared/error", obj:@reserv%>
+            </div>
+            <div class="show-right-nav">
+                <%= form_for @reserv, method: :post, url: reservs_confirm_path do |f| %>
+                    <p class="show-price"><%= @inn.price %> / 日</p>
+                    <div>
+                        <p class="show-label"><%= f.label :start_day, "開始日"%></p>
+                        <%= f.date_field :start_day, class: "show-calender" %>
+                    </div>
+                    <div>
+                        <p class="show-label"><%= f.label :end_day, "終了日"%></p>
+                        <%= f.date_field :end_day, class: "show-calender" %>
+                    </div>
+                    <div>
+                        <p class="show-label"><%= f.label :num_pepo, "人数"%></p>
+                        <%= f.number_field :num_pepo, class: "show-num" %>
+                    </div>
+                    <% if user_signed_in? %>
+                        <%= f.hidden_field :inn_id, value: @inn.id%>
+                        <p class="show-login"><%= f.submit "予約する", class: "account-submit reserv-submit" %></p>
+                    <% else %>
+                        <p class="show-login"><%= link_to "ログイン", new_user_session_path, class: "account-submit show-submit" %></p>
+                    <% end %>
+                <% end %>
+            <div>
+        </div>
+    </div>
+</div>

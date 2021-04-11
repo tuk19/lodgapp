@@ -1,0 +1,33 @@
+<div class="registered-room">
+    <div class="registered--box">
+        <div class="registered-title">
+            <h2>登録済みルーム</h2>
+        <div>
+        <table class="registered-table">
+            <thead class="registered-thead">
+                <tr>
+                    <th class="th-image">ルーム画像</th>
+                    <th class="th-name">ルーム名</th>
+                    <th class="th-intro">ルーム紹介</th>
+                    <th class="th-fee">料金</th>
+                    <th class="th-created">作成日</th>
+                    <th class="th-delete"></th>
+                </tr>
+            </thead>
+            <tbody class="registered-tbody">
+                <% unless @inns == nil %>
+                    <% @inns.each do |inn| %>
+                        <tr>
+                            <td class="registered-image-box"><%= link_to image_tag(inn.image.url, class: "registered-image"), inn %></td>
+                            <td class="registered-name"><%= link_to inn.name, inn%></td>
+                            <td class="registered-intro"><%= inn.introduction %></td>
+                            <td class="registered-fee"><%= inn.price %></td>
+                            <td class="registered-created"><%= inn.created_at%></td>
+                            <td class="registered-delete"><%= link_to "削除", inn, method: :delete, data:{confirm: "本当に削除しますか?"}, class:"delete" %>
+                        <% end %>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="search-box">
+    <p class="search-result">検索結果:
+        <% if @inns == nil %>
+            <span class="search-count">0</span>
+        <% else %>
+            <span class="search-count"><%= @inns.count %></span>
+        <% end %>
+        件</p>
+    <div class="show-room-flex">
+        <% if @inns == nil %>
+            <p>登録はありません</p>
+        <% else %>
+            <% @inns.each do |inn| %>
+                <div class="show-rooms">
+                    <%= link_to inn do%>
+                        <div>
+                            <div class="show-room-image"><%= image_tag inn.image.url, class: "room-image" %></div>
+                            <div class="show-room">
+                                <div class="show-room-name"><%= inn.name %></div>
+                                <div class="show-room-address"><%= inn.address %></div>
+                                <div class="show-rooom-price"><%= inn.price %></div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

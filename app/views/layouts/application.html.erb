@@ -5,12 +5,63 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="header-nav">
+        <div class="header-left">
+          <%= link_to image_tag("logo.png", class:"top-logo"), :lodg %>
+          <%= form_tag(inns_search_path, :method => "get", class: "header-form") do %>
+            <div class="search search-area">
+              <i class="fas fa-map-marker-alt"></i>
+              <%= text_field_tag :search, "", placeholder: "エリア" %>
+              <%= submit_tag "Search", class:"no-display" %>
+            </div>
+          <% end %>
+          <%= form_tag(inns_search_path, :method => "get", class: "header-form") do %>
+            <div class="search search-keyword">
+              <i class="fas fa-search"></i>
+              <%= text_field_tag :keyword, "", placeholder: "キーワード" %>
+              <%= submit_tag "Search", class:"no-display" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="header-right">
+          <% if user_signed_in? %>
+            <nav>
+              <div class="flex">
+                <p class="user-name"><%= current_user.name %></p>
+                <div class="menu-image", id="view_sidebar">
+                  <% if current_user.image? %>
+                    <%= image_tag current_user.image.url, alt: "メニュー", class: "user-image" %>
+                  <% else %>
+                    <%= image_tag "default_icon.jpg", alt: "メニュー", class: "user-image" %>
+                  <% end %>
+                </div>
+              </div>
+            </nav>
+          <% else %>
+            <nav class="login-nav">
+              <%= link_to "ログイン", new_user_session_path, class: "login" %>
+              <%= link_to "登録する", new_user_registration_path, class: "Regist" %>
+            </nav>
+          <% end %>
+        </div>
+        <div class="clear-float">
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="sidebar">
+        <%= render "shared/clickmenu" %>
+      </div>
+      <%= yield %>
+    </main>
+    <footer>
+      <p class="footer-text">©️ 2020 POTEPAN.INC</p>
+    </footer>
   </body>
 </html>

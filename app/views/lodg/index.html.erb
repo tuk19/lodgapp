@@ -1,0 +1,46 @@
+<div class="top">
+    <div class="top-main">
+        <div class="flash flash-lodg">
+            <% if flash.notice %>
+                <p class="flash-text"><%= flash.notice %></p>
+            <% end %>
+        </div>
+        <div class="top-container">
+            <div class="top-form-area">
+                <p class="top-form-area-title">Potepan Shareでまだ体験したことのない旅をしよう</p>
+                <%= form_tag(inns_search_path, :method => "get", class: "top-form") do %>
+                    <%= label_tag :search, "エリア", class: "top-form-label" %>
+                    <%= text_field_tag :search, "", placeholder: "東京", class: "top-form-text" %>
+                    <%= submit_tag "探す", :address => nil, class:"top-form-submit" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="recommend">
+        <div class="recommend-area">
+            <h2 class="recommend-title">おすすめのエリア</h2>
+            <div class="flex recommend-box">
+                <div class="recommend-image">
+                    <%= form_tag(inns_search_path, :method => "get", class: "image-form") do %>
+                        <p class="area-text">東京<p>
+                        <%= link_to image_tag("img_tokyo.jpg", class:"top-image"), controller: "inns", action: "search", search: '東京都' %>
+                    <% end %>
+                </div>
+                <div class="recommend-image">
+                    <p class="area-text">大阪<p>
+                    <%= link_to image_tag("img_osaka.jpg", class:"top-image"), controller: "inns", action: "search", search: '大阪府' %>
+                </div>
+                <div class="recommend-image">
+                    <%= link_to controller: "inns", action: "search", search: "京都府" do%>
+                        <p class="area-text">京都<p>
+                        <%= image_tag("img_kyoto.jpg", class:"top-image") %>
+                    <% end %>
+                </div>
+                <div class="recommend-image">
+                    <p class="area-text">札幌<p>
+                    <%= link_to image_tag("img_sapporo.jpg", class:"top-image"), controller: "inns", action: "search", search: "札幌市" %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
