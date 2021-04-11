@@ -13,7 +13,7 @@
                     <th class="th-sday">開始日</th>
                     <th class="th-eday">終了日</th>
                     <th class="th-created">予約確定日時</th>
-                    <th class="th-delete"></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody class="reserved-tbody">
@@ -22,14 +22,14 @@
                 <% else %>
                     <% @reservs.each do |reserv| %>
                         <tr>
-                            <td class="reserved-image-box"><%= link_to image_tag(reserv.inn.image.url, class: "reserved-image"), reserv.inn %></td>
+                            <td class="reserved-image-box"><%= image_tag reserv.inn.image.url, class: "reserved-image" %></td>
                             <td class="reserved-name"><%= link_to reserv.inn.name, reserv.inn %></td>
                             <td class="reserved-intro"><%= reserv.inn.introduction %></td>
                             <td class="reserved-fee"><%= reserv.fee %></td>
                             <td class="reserved-sday"><%= reserv.start_day %></td>
                             <td class="reserved-eday"><%= reserv.end_day %></td>
                             <td class="reserved-created"><%= reserv.created_at%></td>
-                            <td class="reserved-delete"><%= link_to "削除", reserv, method: :delete, data:{confirm: "削除してよろしいですか?"}, class:"delete" %></td>
+                            <td><%= link_to "削除", reserv, method: :delete, data:{confirm: "削除してよろしいですか?"}, class:"delete" %></td>
                         </tr>
                     <% end %>
                 <% end %>
