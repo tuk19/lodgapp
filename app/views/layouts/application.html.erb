@@ -59,6 +59,16 @@
       <div id="sidebar">
         <%= render "shared/clickmenu" %>
       </div>
+      <%#
+      <script>
+        $(function(){
+          $("#view_sidebar").click(function(){
+            $("#sidebar").toggle(1500);
+            // console.log("clicked");
+          })
+        });
+      </script>
+      %>
       <%= yield %>
     </main>
     <footer>
