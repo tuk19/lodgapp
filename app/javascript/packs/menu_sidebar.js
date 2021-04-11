@@ -10,7 +10,7 @@ jQuery(document).on("turbolinks:load", function(){
             $sidebar.css("display", "block");
             $sidebar.addClass("opened");
         }
-        console.log(p1_element.classList.contains("opened"));
+        // console.log(p1_element.classList.contains("opened"));
     }))
 })
 
