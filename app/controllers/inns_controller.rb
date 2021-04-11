@@ -17,7 +17,7 @@ class InnsController < ApplicationController
     @inn = current_user.inns.new(params.require(:inn).permit(:name, :address, :price, :introduction, :image))
     # binding.pry
     if @inn.save
-      binding.pry
+      # binding.pry
       flash[:notice] = "新規宿を登録しました"
       redirect_to :inns
     else
